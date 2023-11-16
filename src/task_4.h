@@ -1,7 +1,7 @@
 /*
  * Author: Asqarjon Anvarov
  * Date: 16.11.2023
- * Name: Task 3
+ * Name: Task 4
  */
 // task_4.h
 #ifndef TASK_4_H
