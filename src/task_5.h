@@ -1,19 +1,40 @@
-def display_color_matrix(symbol_matrix):
-    color_map = {'b': 'Blue', 'y': 'Yellow', 'w': 'White'}
+/*
+ * Author: Asqarjon Anvarov
+ * Date: 16.11.2023
+ * Name: Task 4
+ */
+#include <iostream>
+#include <windows.h>
 
-    for row in symbol_matrix:
-        for symbol in row:
-            color = color_map.get(symbol, 'Unknown')
-            print(f"{color} ", end='')
-        print()
+using namespace std;
 
-# Example matrix of symbols
-symbol_matrix = [
-    ['b', 'y', 'w', 'y', 'b'],
-    ['w', 'y', 'b', 'y', 'w'],
-    ['b', 'w', 'y', 'w', 'b'],
-    ['y', 'b', 'w', 'b', 'y'],
-]
-
-# Display the visual representation of colors
-display_color_matrix(symbol_matrix)
+int main()
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    int width, length;
+    cout << "Enter width: "; cin >> width;
+    cout << "Enter length: "; cin >> length;
+    char color[width][length];
+    for(int i = 0; i < width; i++){
+        for(int j = 0; j < length; j++){
+            cin >> color[i][j];
+        }
+    }
+    for(int i = 0; i < width; i++){
+        for(int j = 0; j < length; j++){
+            if (color[i][j] == 'b'){
+                SetConsoleTextAttribute(hConsole, 1);
+                cout << "# ";
+            }
+            if (color[i][j] == 'w'){
+                SetConsoleTextAttribute(hConsole, 7);
+                cout << "# ";
+            }
+            if (color[i][j] == 'y'){
+                SetConsoleTextAttribute(hConsole, 6);
+                cout << "# ";
+            }
+        }cout << endl;
+    }
+    return 0;
+}
