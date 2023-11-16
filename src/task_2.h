@@ -4,47 +4,34 @@
  * Name: Task 2 
  */
 #include <iostream>
-#include <vector>
+#include <string>
+#include <climits>
 
+using namespace std;
 
-void selectionSort(std::vector<int> &arr) {
-    int n = arr.size();
-    
-    for (int i = 0; i < n - 1; ++i) {
-        int minIndex = i;
-        
-    
-        for (int j = i + 1; j < n; ++j) {
-            if (arr[j] < arr[minIndex]) {
-                minIndex = j;
+int main()
+{
+    int length;
+    cout << "Enter the number of coins and bankontes: "; cin >> length;
+    int moneys[length], money_sorted[length];
+    for(int i = 0; i < length; i++){
+        cout << "Enter a denomination: "; cin >> moneys[i];
+    }
+
+    for (int i = 0; i < length; i++){
+        int temp_min = INT_MAX, tempj;
+        for (int j = 0; j < length; j++){
+            if (moneys[j] < temp_min){
+                temp_min = moneys[j];
+                tempj = j;
             }
         }
-        
-      
-        std::swap(arr[i], arr[minIndex]);
+        money_sorted[i] = temp_min;
+        moneys[tempj] = INT_MAX;
     }
-}
-
-int main() {
-
-    std::vector<int> denominations = {26, 2,  60, 25, 9, 77, 18};
-
- 
-    std::cout << "Original denominations: ";
-    for (int denomination : denominations) {
-        std::cout << denomination << " ";
+    for (int i = 0; i < length; i++){
+        cout << money_sorted[i] << endl;
     }
-    std::cout << "\n";
-
-
-    selectionSort(denominations);
-
-  
-    std::cout << "Sorted denominations: ";
-    for (int denomination : denominations) {
-        std::cout << denomination << " ";
-    }
-    std::cout << "\n";
 
     return 0;
 }
